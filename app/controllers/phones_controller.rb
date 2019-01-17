@@ -3,10 +3,9 @@ class PhonesController < ApplicationController
   end
 
   def search
-  	cost = params[:cost]
-  	value = params[:value]
-  	@career = Career.find(1)
-  	@name = @career.name
+  	search_cost = params[:cost]
+  	search_value = params[:value]
+  	@plans = Plan.where(["cost <= ? and value >= ?", search_cost, search_value])
   end
 
   def show

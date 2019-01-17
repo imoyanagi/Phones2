@@ -1,3 +1,18 @@
 <h1>検索結果</h1>
 
-<%= @name %>
+<% @plans.each do |plan| %>
+	<table>
+		<tr>
+			<th>キャリア</th>
+			<th> プラン</th>
+			<th> 料金 </th>
+			<th> データ量</th>
+		</tr>
+		<tr>
+			<td><%= plan.career.name %></td>
+			<td><%= plan.name %></td>
+			<td><%= plan.cost %>円</td>
+			<td><%= plan.value %>GB</td>
+		</tr>
+	</table>
+<% end %>

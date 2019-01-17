@@ -1,7 +1,7 @@
 Plan.seed do |s|
 	s.id = 1
 	s.name = 'ベーシックパック~1GB'
-	s.cost = 2900
+	s.cost = 2980
 	s.value = 1
 	s.career_id = Career.find_by(name:'docomo').id
 end

@@ -14,8 +14,11 @@
 				<br>
 
 				家族の人数
-				<%= select_tag :number_of_family, options_for_select([1,2,3,4,5]) %>
+				<%= select_tag :number_of_family, options_for_select([['１人',1],['2人',2],['3人',3],['4人',4],['5人',5]]) %>
 				<br>
+
+				月の通話時間
+				<%= select_tag :call_time, options_for_select([['ほぼ使わない', 0], ['〜5分', 0 ], ['5〜20分', 5 ], ['20分~', 20]]) %>
 
 				<%= submit_tag("検索") %>
 

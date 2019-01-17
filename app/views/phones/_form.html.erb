@@ -1,0 +1,23 @@
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-2">
+			<h1>検索条件</h1>
+			<%= form_tag('/search') do %>
+
+				<%= label_tag(:cost, "料金" ) %>
+				<%= text_field_tag(:cost) %>
+				<br>
+
+				<%= label(:value, "データ量" ) %>
+				<%= text_field_tag(:value) %>
+				<br>
+
+				家族の人数
+				<%= select_tag :number_of_family, options_for_select([1,2,3,4,5]) %>
+				<br>
+
+				<%= submit_tag("検索") %>
+
+			<% end %>
+		</div>

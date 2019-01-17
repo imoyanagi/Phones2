@@ -1,9 +1,10 @@
 class PhonesController < ApplicationController
   def home
-
   end
 
-  def reference
+  def search
+  	cost = params[:cost]
+  	value = params[:value]
   end
 
   def show

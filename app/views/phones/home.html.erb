@@ -1,2 +1,13 @@
-<h1>Phones#home</h1>
-<p>Find me in app/views/phones/home.html.erb</p>
+<h1>フォーム</h1>
+
+<%= form_tag('/search') do %>
+
+	<%= label_tag(:cost, "料金:" ) %>
+	<%= text_field_tag(:cost) %>
+
+	<%= label(:value, "データ量:" ) %>
+	<%= text_field_tag(:value) %>
+
+	<%= submit_tag("検索") %>
+
+<% end %>

@@ -64,7 +64,7 @@ end
 
 CallPlan.seed do |s|
 	s.id = 9
-	s.name = '通話基本プラン'
+	s.name = '定額プラン'
 	s.cost = 3000
 	s.call_time = 20
 	s.career_id = Career.find_by(name:'softbank').id

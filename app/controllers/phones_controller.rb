@@ -7,21 +7,19 @@ class PhonesController < ApplicationController
   def search
   	search_cost = params[:cost]
   	search_value = params[:value]
-	search_call_time = params[:call_time]
+	  search_call_time = params[:call_time]
   	@plans = Plan.where(" value >= ? ", search_value )
   	@call_plans = CallPlan.where("call_time == ? ", search_call_time )
- # ---------------使えない-----------------
-  	# @total_costs = @plans.product(@call_plans)
-    # @plans.product(@call_plans).each do |data, call, total_cost|
-	# 	if data.career_id == call.career_id
-	# 		total_cost = data.cost + call.cost
-	# 	end
-	# end
- # ------使える------------------------
-  	# @number_of_family = params[:number_of_family]
-  	# unless @plans.present?
-  	# 	render html:"結果がありません"
-  	# end
+    @total_costs = []
+    @plans.map{|plan| plan}.product(@call_plans.map{|plan| plan}).each do |data, call|
+  		if data[:career_id] == call[:career_id]
+  			@total_costs.push({cost: data[:cost] + call[:cost], name: call[:name]})
+  		end
+    end
+  	@number_of_family = params[:number_of_family]
+  	unless @plans.present?
+  		render html:"結果がありません"
+  	end
   end
 
   # def calc_total_cost

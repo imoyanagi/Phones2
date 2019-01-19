@@ -125,3 +125,52 @@ Plan.seed do |s|
 	s.value = 50
 	s.career_id = Career.find_by(name:'softbank').id
 end
+
+Plan.seed do |s|
+	s.id = 17
+	s.name = 'Sプラン'
+	s.cost = 2980
+	s.value = 3
+	s.career_id = Career.find_by(name:'ymobile').id
+end
+
+Plan.seed do |s|
+	s.id = 18
+	s.name = 'Mプラン'
+	s.cost = 3980
+	s.value = 9
+	s.career_id = Career.find_by(name:'ymobile').id
+end
+
+Plan.seed do |s|
+	s.id = 19
+	s.name = 'Lプラン'
+	s.cost = 5980
+	s.value = 21
+	s.career_id = Career.find_by(name:'ymobile').id
+end
+
+Plan.seed do |s|
+	s.id = 20
+	s.name = 'プランS'
+	s.cost = 2980
+	s.value = 3
+	s.career_id = Career.find_by(name:'uqmobile').id
+end
+
+Plan.seed do |s|
+	s.id = 21
+	s.name = 'プランM'
+	s.cost = 3980
+	s.value = 9
+	s.career_id = Career.find_by(name:'uqmobile').id
+end
+
+Plan.seed do |s|
+	s.id = 22
+	s.name = 'プランL'
+	s.cost = 5980
+	s.value = 21
+	s.career_id = Career.find_by(name:'uqmobile').id
+end
+

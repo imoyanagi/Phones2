@@ -5,7 +5,7 @@ class PhonesController < ApplicationController
   end
 
   def search
-  	search_cost = params[:cost]
+  	@search_cost = params[:cost].to_i
   	search_value = params[:value]
 	  search_call_time = params[:call_time]
   	@plans = Plan.where(" value >= ? ", search_value )
@@ -22,15 +22,8 @@ class PhonesController < ApplicationController
   	end
   end
 
-  # def calc_total_cost
-  # 	search_cost = params[:cost]
-  # 	search_value = params[:value]
-  # 	search_call_time = params[:call_time]
-  # 	@plans = Plan.where("value >= search_value")
-  # 	@call_plans = CallPlan.where("call_time == search_call_time")
-  # end
-
   def show
+    
   end
 end
 
@@ -42,8 +35,14 @@ end
 # @call_plans = [ { name:"カケホーダイライトプラン", career_id: 1}, {name: "スーパーカケホ", career_id: 2} ]
 
 # データと通話で同じキャリアのものを足し算
-
 # 数は@plansの数だけ存在する
+
+# 家族割引など
+# @total_costs.each do |cost|
+#   ソフトバンクの割引
+# if number_of_family == 4
+#   if career_id == 3
+#     discounted_costs.push(cost[:cost] - 2160)
 
 
 

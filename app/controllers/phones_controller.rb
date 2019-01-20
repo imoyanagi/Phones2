@@ -36,6 +36,7 @@ class PhonesController < ApplicationController
   end
 
   def show
+    @plans = Plan.where("career_id == ?", params[:id])
   end
 end
 

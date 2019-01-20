@@ -25,6 +25,13 @@
 				<%= select_tag :call_time, options_for_select([['指定無し', 30], ['〜5分', 0], ['5〜20分', 5], ['20分~', 20]]) %>
 				<br>
 				<%= submit_tag("検索") %>
+				<br>
+
+				<%= link_to "docomo", category_path(1), method: :post %>
+				<br>
+				<%= link_to "au", category_path(2), method: :post %>
+				<br>
+				<%= link_to "softbank", category_path(3), method: :post %>
 
 			<% end %>
 		</div>

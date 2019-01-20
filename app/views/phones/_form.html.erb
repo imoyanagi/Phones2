@@ -1,27 +1,29 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-lg-2">
+		<div class="col-lg-3">
 			<h1>検索条件</h1>
 			<%= form_tag('/search') do %>
 
 				<%= label_tag(:cost, "料金" ) %>
-				<%= text_field_tag(:cost) %>
-				<%#= collection_select(:cost, :cost, @plans, :id, :cost) %>
+				<br>
+				<%= select_tag :min_cost, options_for_select([['下限無し', 0], ['1000円', 1000], ['2000円', 2000], ['3000円', 3000], ['4000円', 4000], ['5000円', 5000]]) %> 〜
+				<%= select_tag :max_cost, options_for_select([['上限無し', 100000], ['1000円', 1000], ['2000円', 2000], ['3000円', 3000], ['4000円', 4000], ['5000円', 5000], ['6000円', 6000], ['7000円', 7000], ['8000円', 8000], ['9000円', 9000] ]) %>
 
 				<br>
 
-				<%= label(:value, "データ量" ) %>
-				<%= text_field_tag(:value) %>
+				<%= label(:value, "データ量" ) %><br>
+				<%= select_tag :value, options_for_select([['指定無し', 0], ['1GB', 1], ['2GB', 2], ['3GB', 3], ['5GB', 5],['9GB', 9], ['20GB', 20]]) %>
 				<br>
-
-				家族の人数
+			<!--
+				<%= label(:number_of_family, "家族の人数") %><br>
 				<%= select_tag :number_of_family, options_for_select([['１人',1],['2人',2],['3人',3],['4人',4],['5人',5]]) %>
 				<br>
+			-->
 
-				月の通話時間
-				<%= select_tag :call_time, options_for_select([['ほぼ使わない', 0], ['〜5分', 0 ], ['5〜20分', 5 ], ['20分~', 20]]) %>
-
+				<%= label(:call_time, "月の通話時間") %><br>
+				<%= select_tag :call_time, options_for_select([['指定無し', 30], ['〜5分', 0], ['5〜20分', 5], ['20分~', 20]]) %>
+				<br>
 				<%= submit_tag("検索") %>
 
 			<% end %>

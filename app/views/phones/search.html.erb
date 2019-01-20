@@ -1,10 +1,8 @@
 <%= render 'phones/header' %>
 <%= render 'phones/form' %>
 
-<div class="col-lg-10">
+<div class="col-lg-9">
 	<h1> 検索結果</h1>
-	家族の人数
-	<%= @number_of_family %>人
 	<table class="table table-striped">
 		<tr>
 			<th width="10%">キャリア</th>
@@ -13,9 +11,9 @@
 			<th width="20%">データ量</th>
 		</tr>
 		<% @plans.zip(@total_costs).each do |plan, total_cost| %>
-			<% if total_cost[:cost] <= @search_cost %>
+			<% if total_cost[:cost] <= @search_max_cost && total_cost[:cost] >= @search_min_cost %>
 				<tr>
-					<td><%= plan.career.name %></td>
+				    <td><%= plan.career.name %></td>
 					<% if total_cost[:name] == "" %>
 						<td><%= plan.name + "(通話オプション無し)" %></td>
 					<% else %>

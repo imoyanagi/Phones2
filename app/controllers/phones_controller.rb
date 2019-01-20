@@ -5,15 +5,20 @@ class PhonesController < ApplicationController
   end
 
   def search
-  	@search_cost = params[:cost].to_i
+  	@search_min_cost = params[:min_cost].to_i
+    @search_max_cost = params[:max_cost].to_i
   	search_value = params[:value]
 	  search_call_time = params[:call_time]
   	@plans = Plan.where(" value >= ? ", search_value )
-  	@call_plans = CallPlan.where("call_time == ? ", search_call_time )
+    if search_call_time == "30"
+      @call_plans = CallPlan.all
+  	else
+      @call_plans = CallPlan.where("call_time == ? ", search_call_time )
+    end
     @total_costs = []
     @plans.map{|plan| plan}.product(@call_plans.map{|plan| plan}).each do |data, call|
   		if data[:career_id] == call[:career_id]
-  			@total_costs.push({cost: data[:cost] + call[:cost], name: call[:name]})
+  			@total_costs.push({cost: data[:cost] + call[:cost], name: call[:name], career_id: data[:career_id]})
   		end
     end
   	@number_of_family = params[:number_of_family]
@@ -23,7 +28,6 @@ class PhonesController < ApplicationController
   end
 
   def show
-    
   end
 end
 

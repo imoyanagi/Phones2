@@ -18,7 +18,7 @@ class PhonesController < ApplicationController
     @total_costs = []
     @plans.map{|plan| plan}.product(@call_plans.map{|plan| plan}).each do |data, call|
   		if data[:career_id] == call[:career_id]
-  			@total_costs.push({cost: data[:cost] + call[:cost], name: call[:name], career_id: data[:career_id]})
+  			@total_costs.push({cost: data[:cost] + call[:cost], name: data[:name] + "  " + call[:name], value: data[:value], career_id: data[:career_id] })
   		end
     end
   	@number_of_family = params[:number_of_family]

@@ -5,26 +5,34 @@ class PhonesController < ApplicationController
   end
 
   def search
+    #検索条件の取得
   	@search_min_cost = params[:min_cost].to_i
     @search_max_cost = params[:max_cost].to_i
   	search_value = params[:value]
 	  search_call_time = params[:call_time]
+
+    #データベースから取得
   	@plans = Plan.where(" value >= ? ", search_value )
     if search_call_time == "30"
       @call_plans = CallPlan.all
   	else
       @call_plans = CallPlan.where("call_time == ? ", search_call_time )
     end
-    @total_costs = []
+
+    #データプランと通話プランの合計を計算して配列にぶっこむ
+    @totals = []
     @plans.map{|plan| plan}.product(@call_plans.map{|plan| plan}).each do |data, call|
   		if data[:career_id] == call[:career_id]
-  			@total_costs.push({cost: data[:cost] + call[:cost], name: data[:name] + "  " + call[:name], value: data[:value], career_id: data[:career_id] })
+  			@totals.push({cost: data[:cost] + call[:cost], name: data[:name] + "  " + call[:name], value: data[:value], career_id: data[:career_id] })
   		end
     end
+
+    #未実装
   	@number_of_family = params[:number_of_family]
   	unless @plans.present?
   		render html:"結果がありません"
   	end
+
   end
 
   def show

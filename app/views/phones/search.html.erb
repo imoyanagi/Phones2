@@ -10,13 +10,13 @@
 			<th width="20%">料金 </th>
 			<th width="20%">データ量</th>
 		</tr>
-		<% @total_costs.each do |total_cost| %>
-			<% if total_cost[:cost] <= @search_max_cost && total_cost[:cost] >= @search_min_cost %>
+		<% @totals.each do |total| %>
+			<% if total[:cost] <= @search_max_cost && total[:cost] >= @search_min_cost %>
 				<tr>
-					<td><%= Career.find_by(id: total_cost[:career_id]).name %>
-					<td><%= total_cost[:name] %>
-					<td><%= total_cost[:cost] %>円/月</td>
-					<td><%= total_cost[:value] %>GB/月</td>
+					<td><%= Career.find_by(id: total[:career_id]).name %>
+					<td><%= total[:name] %>
+					<td><%= total[:cost] %>円/月</td>
+					<td><%= total[:value] %>GB/月</td>
 				</tr>
 			<% end %>
 		<% end %>

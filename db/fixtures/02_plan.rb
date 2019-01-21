@@ -3,6 +3,7 @@ Plan.seed do |s|
 	s.name = 'ベーシックパック~1GB'
 	s.cost = 2980
 	s.value = 1
+	s.net_discount = 0
 	s.career_id = Career.find_by(name:'docomo').id
 end
 
@@ -124,6 +125,7 @@ Plan.seed do |s|
 	s.cost = 7480
 	s.value = 50
 	s.career_id = Career.find_by(name:'softbank').id
+	s.net_discount = 1000
 end
 
 Plan.seed do |s|
@@ -132,6 +134,7 @@ Plan.seed do |s|
 	s.cost = 2980
 	s.value = 3
 	s.career_id = Career.find_by(name:'ymobile').id
+	s.net_discount = 500
 end
 
 Plan.seed do |s|
@@ -140,6 +143,7 @@ Plan.seed do |s|
 	s.cost = 3980
 	s.value = 9
 	s.career_id = Career.find_by(name:'ymobile').id
+	s.net_discount = 700
 end
 
 Plan.seed do |s|
@@ -148,6 +152,7 @@ Plan.seed do |s|
 	s.cost = 5980
 	s.value = 21
 	s.career_id = Career.find_by(name:'ymobile').id
+	s.net_discount = 1000
 end
 
 Plan.seed do |s|

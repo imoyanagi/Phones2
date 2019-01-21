@@ -10,7 +10,7 @@ class PhonesController < ApplicationController
     @search_max_cost = params[:max_cost].to_i
   	search_value = params[:value]
 	  search_call_time = params[:call_time]
-    current_net_career = params[:current_net_career]
+    current_net_career = params[:current_net_career].to_i
 
     #データベースから取得
   	@plans = Plan.where(" value >= ? ", search_value )
@@ -23,9 +23,15 @@ class PhonesController < ApplicationController
     #データプランと通話プランの合計を計算して配列にぶちこむ
     @totals = []
     @plans.map{|plan| plan}.product(@call_plans.map{|plan| plan}).each do |data, call|
+      #データと通話のキャリアが一致
   		if data[:career_id] == call[:career_id]
-  			@totals.push({cost: data[:cost] + call[:cost], name: data[:name] + "  " + call[:name], value: data[:value], career_id: data[:career_id] })
-  		end
+        #ネットのキャリアが一致しているものは割引する
+        if current_net_career == data[:career_id]
+  			 @totals.push({cost: data[:cost] + call[:cost] - data[:net_discount], name: data[:name] + "  " + call[:name], value: data[:value], career_id: data[:career_id] })
+  		  else
+         @totals.push({cost: data[:cost] + call[:cost], name: data[:name] + "  " + call[:name], value: data[:value], career_id: data[:career_id] })
+        end
+      end
     end
 
     #未実装

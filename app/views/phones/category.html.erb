@@ -10,13 +10,14 @@
 			<th width="20%">料金 </th>
 			<th width="20%">データ量</th>
 		</tr>
-		<% @plans.each do |plan| %>
-				<tr>
-					<td><%= plan.career.name %>
-					<td><%= plan.name %>
-					<td><%= plan.cost %>円/月</td>
-					<td><%= plan.value %>GB/月</td>
-				</tr>
+		<% @totals.each do |total| %>
+			<tr>
+				<td><%= Career.find_by(id: total[:career_id]).name %></td>
+				<td><%= total[:name] %></td>
+				<td><%= total[:cost] %>円/月</td>
+				<td><%= total[:value] %>GB/月</td>
+				<td><%= link_to "詳細", phone_path(total) %></td>
+			</tr>
 		<% end %>
 	</table>
 

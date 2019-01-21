@@ -6,6 +6,7 @@ class PhonesController < ApplicationController
 
   def search
     #検索条件の取得
+    mobile_phone = params[:mobile_phone]
   	@search_min_cost = params[:min_cost].to_i
     @search_max_cost = params[:max_cost].to_i
   	search_value = params[:value]
@@ -13,6 +14,7 @@ class PhonesController < ApplicationController
     current_net_career = params[:current_net_career].to_i
 
     #データベースから取得
+    @mobile_phones = MobilePhone.where(" name == ? ", mobile_phone )
   	@plans = Plan.where(" value >= ? ", search_value )
     if search_call_time == "30"
       @call_plans = CallPlan.all
@@ -47,7 +49,13 @@ class PhonesController < ApplicationController
   end
 
   def category
+    @totals = []
     @plans = Plan.where("career_id == ?", params[:id])
+    @plans.map{|q| q}.product(CallPlan.all.map{|q| q}).each do |data, call|
+      if data[:career_id] == call[:career_id]
+        @totals.push({cost: data[:cost] + call[:cost], name: data[:name] + "  " + call[:name], value: data[:value], career_id: data[:career_id] })
+      end
+    end
   end
 end
 

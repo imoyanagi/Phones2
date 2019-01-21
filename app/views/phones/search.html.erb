@@ -3,22 +3,27 @@
 
 <div class="col-lg-9">
 	<h1> 検索結果</h1>
+	<%= @mobile_phone %>
 	<table class="table table-striped">
 		<tr>
-			<th width="10%">キャリア</th>
-			<th width="20%">プラン</th>
-			<th width="20%">料金 </th>
-			<th width="20%">データ量</th>
+			<th width="5%">キャリア</th>
+			<th width="15%">プラン</th>
+			<th width="15%">料金 </th>
+			<th width="15%">データ量</th>
+			<th width="15%">端末</th>
 		</tr>
-		<% @totals.uniq{ |h| h[:name]}.each do |total| %>
-			<% if total[:cost] <= @search_max_cost && total[:cost] >= @search_min_cost %>
-				<tr>
-					<td><%= Career.find_by(id: total[:career_id]).name %></td>
-					<td><%= total[:name] %></td>
-					<td><%= total[:cost] %>円/月</td>
-					<td><%= total[:value] %>GB/月</td>
-					<td><%= link_to "詳細", phone_path(total) %></td>
-				</tr>
+		<% @totals.uniq{ |h| h[:name]}.product(@mobile_phones.map{|m| m}).each do |total, mobile_phone| %>
+			<% if total[:career_id] == mobile_phone[:career_id] %>
+				<% if total[:cost] <= @search_max_cost && total[:cost] >= @search_min_cost %>
+					<tr>
+						<td><%= Career.find_by(id: total[:career_id]).name %></td>
+						<td><%= total[:name] %></td>
+						<td><%= total[:cost] + mobile_phone[:cost] %>円/月</td>
+						<td><%= total[:value] %>GB/月</td>
+						<td><%= mobile_phone[:name] %><td>
+						<td><%= link_to "詳細", phone_path(total) %></td>
+					</tr>
+				<% end %>
 			<% end %>
 		<% end %>
 	</table>

@@ -30,15 +30,17 @@
 				<%= label(:current_net_career, "使用中のインターネット") %> <br>
 				<%= select_tag :current_net_career, options_for_select([['指定無し', 0], ['docomo光', 1], ['au光', 2], ['softbank光', 3], ['ymobile', 4] ]) %>
 				<br>
+				<%= label(:mobile_phone, "端末") %> <br>
+				<%= select_tag :mobile_phone, options_for_select(['iPhone Xs 64GB', 'iPhone Xs MAX 64GB', 'iPhone XR 64GB']) %>
+				<br>
 
 				<%= submit_tag("検索") %>
 				<br>
-				<!-- ポストである必要ない？ -->
-				<%= link_to "docomo", category_path(1), method: :post %>
+				<p> キャリアで選ぶ</p>
+				<%= link_to "docomo", category_path(1) %>
 				<br>
-				<%= link_to "au", category_path(2), method: :post %>
+				<%= link_to "au", category_path(2) %>
 				<br>
-				<%= link_to "softbank", category_path(3), method: :post %>
-
+				<%= link_to "softbank", category_path(3) %>
 			<% end %>
 		</div>

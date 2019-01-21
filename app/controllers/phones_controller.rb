@@ -10,6 +10,7 @@ class PhonesController < ApplicationController
     @search_max_cost = params[:max_cost].to_i
   	search_value = params[:value]
 	  search_call_time = params[:call_time]
+    current_net_career = params[:current_net_career]
 
     #データベースから取得
   	@plans = Plan.where(" value >= ? ", search_value )

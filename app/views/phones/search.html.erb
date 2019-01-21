@@ -10,7 +10,7 @@
 			<th width="20%">料金 </th>
 			<th width="20%">データ量</th>
 		</tr>
-		<% @totals.each do |total| %>
+		<% @totals.uniq{ |h| h[:name]}.each do |total| %>
 			<% if total[:cost] <= @search_max_cost && total[:cost] >= @search_min_cost %>
 				<tr>
 					<td><%= Career.find_by(id: total[:career_id]).name %></td>

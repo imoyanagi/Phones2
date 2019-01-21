@@ -70,21 +70,21 @@ CallPlan.seed do |s|
 	s.career_id = Career.find_by(name:'softbank').id
 end
 # YmobileとUQmobileのcall_time = 0 と call_time = 5 は該当するプランがない
-# CallPlan.seed do |s|
-# 	s.id = 10
-# 	s.name = ''
-# 	s.cost = 0
-# 	s.call_time = 0
-# 	s.career_id = Career.find_by(name:'ymobile').id
-# end
+CallPlan.seed do |s|
+	s.id = 10
+	s.name = ''
+	s.cost = 0
+	s.call_time = 0
+	s.career_id = Career.find_by(name:'ymobile').id
+end
 
-# CallPlan.seed do |s|
-# 	s.id = 11
-# 	s.name = ''
-# 	s.cost = 0
-# 	s.call_time = 5
-# 	s.career_id = Career.find_by(name:'ymobile').id
-# end
+CallPlan.seed do |s|
+	s.id = 11
+	s.name = ''
+	s.cost = 0
+	s.call_time = 5
+	s.career_id = Career.find_by(name:'ymobile').id
+end
 
 CallPlan.seed do |s|
 	s.id = 12
@@ -94,26 +94,26 @@ CallPlan.seed do |s|
 	s.career_id = Career.find_by(name:'ymobile').id
 end
 
-# CallPlan.seed do |s|
-# 	s.id = 13
-# 	s.name = ''
-# 	s.cost = 0
-# 	s.call_time = 0
-# 	s.career_id = Career.find_by(name:'uqmobile').id
-# end
+CallPlan.seed do |s|
+	s.id = 13
+	s.name = ''
+	s.cost = 0
+	s.call_time = 0
+	s.career_id = Career.find_by(name:'uqmobile').id
+end
 
-# CallPlan.seed do |s|
-# 	s.id = 14
-# 	s.name = ''
-# 	s.cost = 0
-# 	s.call_time = 5
-# 	s.career_id = Career.find_by(name:'uqmobile').id
-# end
+CallPlan.seed do |s|
+	s.id = 14
+	s.name = ''
+	s.cost = 0
+	s.call_time = 5
+	s.career_id = Career.find_by(name:'uqmobile').id
+end
 
-# CallPlan.seed do |s|
-# 	s.id = 15
-# 	s.name = ''
-# 	s.cost = 0
-# 	s.call_time = 20
-# 	s.career_id = Career.find_by(name:'uqmobile').id
-# end
+CallPlan.seed do |s|
+	s.id = 15
+	s.name = ''
+	s.cost = 0
+	s.call_time = 20
+	s.career_id = Career.find_by(name:'uqmobile').id
+end

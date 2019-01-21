@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-lg-3">
 			<h1>検索条件</h1>
-			<%= form_tag('/search') do %>
+			<%= form_tag('/search', method: :get) do %>
 
 				<%= label_tag(:cost, "料金" ) %>
 				<br>
@@ -26,7 +26,7 @@
 				<br>
 				<%= submit_tag("検索") %>
 				<br>
-
+				<!-- ポストである必要ない？ -->
 				<%= link_to "docomo", category_path(1), method: :post %>
 				<br>
 				<%= link_to "au", category_path(2), method: :post %>

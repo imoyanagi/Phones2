@@ -13,10 +13,11 @@
 		<% @totals.each do |total| %>
 			<% if total[:cost] <= @search_max_cost && total[:cost] >= @search_min_cost %>
 				<tr>
-					<td><%= Career.find_by(id: total[:career_id]).name %>
-					<td><%= total[:name] %>
+					<td><%= Career.find_by(id: total[:career_id]).name %></td>
+					<td><%= total[:name] %></td>
 					<td><%= total[:cost] %>円/月</td>
 					<td><%= total[:value] %>GB/月</td>
+					<td><%= link_to "詳細", phone_path(total) %></td>
 				</tr>
 			<% end %>
 		<% end %>

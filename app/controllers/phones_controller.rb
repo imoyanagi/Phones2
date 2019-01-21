@@ -19,7 +19,7 @@ class PhonesController < ApplicationController
       @call_plans = CallPlan.where("call_time == ? ", search_call_time )
     end
 
-    #データプランと通話プランの合計を計算して配列にぶっこむ
+    #データプランと通話プランの合計を計算して配列にぶちこむ
     @totals = []
     @plans.map{|plan| plan}.product(@call_plans.map{|plan| plan}).each do |data, call|
   		if data[:career_id] == call[:career_id]
@@ -36,6 +36,10 @@ class PhonesController < ApplicationController
   end
 
   def show
+    @total = params{total}
+  end
+
+  def category
     @plans = Plan.where("career_id == ?", params[:id])
   end
 end

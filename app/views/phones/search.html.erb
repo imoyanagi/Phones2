@@ -3,7 +3,6 @@
 
 <div class="col-lg-9">
 	<h1> 検索結果</h1>
-	<%= @mobile_phone %>
 	<table class="table table-striped">
 		<tr>
 			<th>キャリア</th>
@@ -15,17 +14,16 @@
 			<th></th>
 		</tr>
 		<% @totals.each do |total| %>
-			<% if (total[:data_cost] + total[:call_cost] + total[:phone_cost]) <= @search_max_cost && (total[:data_cost] + total[:call_cost] + total[:phone_cost]) >= @search_min_cost %>
+			<% if total.plan.career_id == total.call_plan.career_id && total.call_plan.career_id == total.mobile_phone.career_id %>
 				<tr>
-					<td><%= Career.find_by(id: total[:career_id]).name %></td>
-					<td><%= total[:data_name] %></td>
-					<td><%= total[:call_name] %></td>
-					<td><%= total[:data_cost] + total[:call_cost] + total[:phone_cost] %>円/月</td>
-					<td><%= total[:value] %>GB/月</td>
-					<td><%= total[:phone_name] %><td>
-					<td><%= link_to "詳細", phone_path(total: total) %></td>
+					<td><%= Career.find_by(id: total.plan.career_id).name %></td>
+					<td><%= total.plan.name %></td>
+					<td><%= total.call_plan.name %></td>
+					<td><%= total.plan.cost + total.call_plan.cost + total.mobile_phone.cost %>円/月</td>
+					<td><%= total.plan.value %>GB/月</td>
+					<td><%= total.mobile_phone.name %><td>
+					<td><%= link_to "詳細", phone_path(id: total.id) %></td>
 				</tr>
-
 			<% end %>
 		<% end %>
 	</table>

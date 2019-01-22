@@ -13,6 +13,8 @@ class PhonesController < ApplicationController
 	  search_call_time = params[:call_time]
     current_net_career = params[:current_net_career].to_i
 
+    # @totals = Total.where(["total.plan.value >= ? and total.call_plan.call_time == ? and total.mobile_phone.name == ? ", search_value, search_call_time, mobile_phone])
+
     #データベースから取得
     @mobile_phones = MobilePhone.where(" name == ? ", mobile_phone )
   	@plans = Plan.where(" value >= ? ", search_value )
@@ -21,37 +23,41 @@ class PhonesController < ApplicationController
   	else
       @call_plans = CallPlan.where("call_time == ? ", search_call_time )
     end
+    plan_ids = []
+    @plans.each{|plan| plan_ids.push(plan.id)}
+    call_plan_ids = []
+    @call_plans.each{|call_plan| call_plan_ids.push(call_plan.id)}
+    mobile_phone_ids = []
+    @mobile_phones.each{|mobile_phone| mobile_phone_ids.push(mobile_phone.id)}
+    # @totals = Total.where("plan_id == ? and call_plan_id == ? and mobile_phone_id == ? ", @plan.id, @call_plan.id, @mobile_phone.id)
+    @totals = Total.where(plan_id: plan_ids).where(call_plan_id: call_plan_ids).where(mobile_phone_id: mobile_phone_ids)
 
-    #データプランと通話プランの合計を計算して配列にぶちこむ
-    @sums = []
-    @plans.map{|plan| plan}.product(@call_plans.map{|plan| plan}).each do |data, call|
-      #データと通話のキャリアが一致
-  		if data[:career_id] == call[:career_id]
-        #ネットのキャリアが一致しているものは割引する
-        if current_net_career == data[:career_id]
-  			 @sums.push({data_cost: data[:cost], call_cost: call[:cost], net_discount: data[:net_discount], data_name: data[:name], call_name: call[:name], value: data[:value], career_id: data[:career_id] })
-  		  else
-         @sums.push({data_cost: data[:cost], call_cost: call[:cost], data_name: data[:name], call_name: call[:name], value: data[:value], career_id: data[:career_id] })
-        end
-      end
-    end
-    #sumsに端末代加える
-    @totals = []
-    @sums.uniq{ |h| [h[:data_name], h[:call_name]]}.product(@mobile_phones.map{|m| m}).each do |sum, mobile_phone|
-      if sum[:career_id] == mobile_phone[:career_id]
-        @totals.push({data_cost: sum[:data_cost], call_cost: sum[:call_cost], data_name: sum[:data_name], call_name: sum[:call_name], value: sum[:value], career_id: sum[:career_id], phone_name: mobile_phone[:name], phone_cost: mobile_phone[:cost] })
-      end
-    end
+   #  #データプランと通話プランの合計を計算して配列にぶちこむ
+   #  @sums = []
+   #  @plans.map{|plan| plan}.product(@call_plans.map{|plan| plan}).each do |data, call|
+   #    #データと通話のキャリアが一致
+  	# 	if data[:career_id] == call[:career_id]
+   #      #ネットのキャリアが一致しているものは割引する
+   #      if current_net_career == data[:career_id]
+  	# 		 @sums.push({data_cost: data[:cost], call_cost: call[:cost], net_discount: data[:net_discount], data_name: data[:name], call_name: call[:name], value: data[:value], career_id: data[:career_id] })
+  	# 	  else
+   #       @sums.push({data_cost: data[:cost], call_cost: call[:cost], data_name: data[:name], call_name: call[:name], value: data[:value], career_id: data[:career_id] })
+   #      end
+   #    end
+   #  end
+   #  #sumsに端末代加える
+   #  @totals = []
+   #  @sums.uniq{ |h| [h[:data_name], h[:call_name]]}.product(@mobile_phones.map{|m| m}).each do |sum, mobile_phone|
+   #    if sum[:career_id] == mobile_phone[:career_id]
+   #      @totals.push({data_cost: sum[:data_cost], call_cost: sum[:call_cost], data_name: sum[:data_name], call_name: sum[:call_name], value: sum[:value], career_id: sum[:career_id], phone_name: mobile_phone[:name], phone_cost: mobile_phone[:cost] })
+   #    end
+   #  end
     #未実装
   	@number_of_family = params[:number_of_family]
-  	unless @plans.present?
-  		render html:"結果がありません"
-  	end
-
   end
 
   def show
-    @total = params[:total]
+    @total = Total.find(params[:id])
   end
 
   def category

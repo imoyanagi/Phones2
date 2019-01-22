@@ -6,19 +6,19 @@
 	<table class="table table-striped" border="2">
 		<tr>
 			<th>キャリア</th>
-			<td><%= Career.find_by(id: @total[:career_id]).name %></td>
+			<td><%= Career.find_by(id: @total.plan.career_id).name %></td>
 		</tr>
 		<tr>
 			<th>データプラン</th>
-			<td><%= @total[:data_name] %></td>
+			<td><%= @total.plan.name %></td>
 		</tr>
 		<tr>
 			<th>通話プラン</th>
-			<td><%= @total[:call_name] %></td>
+			<td><%= @total.call_plan.name %></td>
 		</tr>
 		<tr>
 			<th>端末</th>
-			<td><%= @total[:phone_name] %></td>
+			<td><%= @total.mobile_phone.name %></td>
 		</tr>
 		<tr>
 			<th>割引</th>
@@ -29,18 +29,18 @@
 		<table class="table table-striped" border="2">
 		<tr>
 			<th>データプラン</th>
-			<td><%= @total[:data_name] %></td>
-			<td><%= @total[:data_cost] %> 円/月</td>
+			<td><%= @total.plan.name %></td>
+			<td><%= @total.plan.cost %> 円/月</td>
 		</tr>
 		<tr>
 			<th>通話プラン</th>
-			<td><%= @total[:call_name] %></td>
-			<td><%= @total[:call_cost] %> 円/月</td>
+			<td><%= @total.call_plan.name %></td>
+			<td><%= @total.call_plan.cost %> 円/月</td>
 		</tr>
 		<tr>
 			<th>端末代</th>
-			<td><%= @total[:phone_name] %></td>
-			<td><%= @total[:phone_cost] %> 円/月(24回)</td>
+			<td><%= @total.mobile_phone.name %></td>
+			<td><%= @total.mobile_phone.cost %> 円/月(24回)</td>
 		</tr>
 		<tr>
 			<th>割引</th>
@@ -50,7 +50,7 @@
 		<tr>
 			<th>合計</th>
 			<th></th>
-			<td><%= @total[:data_cost].to_i + @total[:call_cost].to_i + @total[:phone_cost].to_i %> 円/月</td>
+			<td><%= @total.plan.cost.to_i + @total.call_plan.cost.to_i + @total.mobile_phone.cost.to_i %> 円/月</td>
 		</tr>
 	</table>
 </div>

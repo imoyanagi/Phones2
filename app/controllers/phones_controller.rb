@@ -23,19 +23,25 @@ class PhonesController < ApplicationController
     end
 
     #データプランと通話プランの合計を計算して配列にぶちこむ
-    @totals = []
+    @sums = []
     @plans.map{|plan| plan}.product(@call_plans.map{|plan| plan}).each do |data, call|
       #データと通話のキャリアが一致
   		if data[:career_id] == call[:career_id]
         #ネットのキャリアが一致しているものは割引する
         if current_net_career == data[:career_id]
-  			 @totals.push({cost: data[:cost] + call[:cost] - data[:net_discount], name: data[:name] + "  " + call[:name], value: data[:value], career_id: data[:career_id] })
+  			 @sums.push({data_cost: data[:cost], call_cost: call[:cost], net_discount: data[:net_discount], data_name: data[:name], call_name: call[:name], value: data[:value], career_id: data[:career_id] })
   		  else
-         @totals.push({cost: data[:cost] + call[:cost], name: data[:name] + "  " + call[:name], value: data[:value], career_id: data[:career_id] })
+         @sums.push({data_cost: data[:cost], call_cost: call[:cost], data_name: data[:name], call_name: call[:name], value: data[:value], career_id: data[:career_id] })
         end
       end
     end
-
+    #sumsに端末代加える
+    @totals = []
+    @sums.uniq{ |h| [h[:data_name], h[:call_name]]}.product(@mobile_phones.map{|m| m}).each do |sum, mobile_phone|
+      if sum[:career_id] == mobile_phone[:career_id]
+        @totals.push({data_cost: sum[:data_cost], call_cost: sum[:call_cost], data_name: sum[:data_name], call_name: sum[:call_name], value: sum[:value], career_id: sum[:career_id], phone_name: mobile_phone[:name], phone_cost: mobile_phone[:cost] })
+      end
+    end
     #未実装
   	@number_of_family = params[:number_of_family]
   	unless @plans.present?
@@ -45,7 +51,7 @@ class PhonesController < ApplicationController
   end
 
   def show
-    @total = params{total}
+    @total = params[:total]
   end
 
   def category

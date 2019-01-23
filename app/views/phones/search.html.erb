@@ -14,7 +14,7 @@
 			<th></th>
 		</tr>
 		<% @totals.each do |total| %>
-			<% if total.plan.career_id == total.call_plan.career_id && total.call_plan.career_id == total.mobile_phone.career_id %>
+			<% if total.call_plan.career_id == total.mobile_phone.career_id %>
 				<tr>
 					<td><%= Career.find_by(id: total.plan.career_id).name %></td>
 					<td><%= total.plan.name %></td>

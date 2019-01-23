@@ -86,3 +86,26 @@ MobilePhone.seed do |s|
 	s.career_id = Career.find_by(name:'uqmobile').id
 end
 
+MobilePhone.seed do |s|
+	s.id = 12
+	s.name = '無し'
+	s.cost = 0
+	s.mnp_cost = 0
+	s.career_id = Career.find_by(name:'楽天モバイル').id
+end
+
+MobilePhone.seed do |s|
+	s.id = 13
+	s.name = '無し'
+	s.cost = 0
+	s.mnp_cost = 0
+	s.career_id = Career.find_by(name:'LINEモバイル').id
+end
+
+MobilePhone.seed do |s|
+	s.id = 14
+	s.name = '無し'
+	s.cost = 0
+	s.mnp_cost = 0
+	s.career_id = Career.find_by(name:'mineo').id
+end

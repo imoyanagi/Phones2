@@ -117,3 +117,76 @@ CallPlan.seed do |s|
 	s.call_time = 20
 	s.career_id = Career.find_by(name:'uqmobile').id
 end
+
+CallPlan.seed do |s|
+	s.id = 16
+	s.name = ''
+	s.cost = 0
+	s.call_time = 0
+	s.career_id = Career.find_by(name:'楽天モバイル').id
+end
+
+CallPlan.seed do |s|
+	s.id = 17
+	s.name = ''
+	s.cost = 0
+	s.call_time = 5
+	s.career_id = Career.find_by(name:'楽天モバイル').id
+end
+
+CallPlan.seed do |s|
+	s.id = 18
+	s.name = ''
+	s.cost = 0
+	s.call_time = 20
+	s.career_id = Career.find_by(name:'楽天モバイル').id
+end
+
+CallPlan.seed do |s|
+	s.id = 19
+	s.name = ''
+	s.cost = 0
+	s.call_time = 0
+	s.career_id = Career.find_by(name:'LINEモバイル').id
+end
+
+CallPlan.seed do |s|
+	s.id = 20
+	s.name = ''
+	s.cost = 0
+	s.call_time = 5
+	s.career_id = Career.find_by(name:'LINEモバイル').id
+end
+
+CallPlan.seed do |s|
+	s.id = 21
+	s.name = ''
+	s.cost = 0
+	s.call_time = 20
+	s.career_id = Career.find_by(name:'LINEモバイル').id
+end
+
+CallPlan.seed do |s|
+	s.id = 22
+	s.name = ''
+	s.cost = 0
+	s.call_time = 0
+	s.career_id = Career.find_by(name:'mineo').id
+end
+
+CallPlan.seed do |s|
+	s.id = 23
+	s.name = ''
+	s.cost = 0
+	s.call_time = 5
+	s.career_id = Career.find_by(name:'mineo').id
+end
+
+CallPlan.seed do |s|
+	s.id = 24
+	s.name = ''
+	s.cost = 0
+	s.call_time = 20
+	s.career_id = Career.find_by(name:'mineo').id
+end
+

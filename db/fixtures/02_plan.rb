@@ -179,3 +179,164 @@ Plan.seed do |s|
 	s.career_id = Career.find_by(name:'uqmobile').id
 end
 
+Plan.seed do |s|
+	s.id = 23
+	s.name = 'プランS'
+	s.cost = 3218
+	s.value = 2
+	s.career_id = Career.find_by(name:'楽天モバイル').id
+end
+
+Plan.seed do |s|
+	s.id = 24
+	s.name = 'プランM'
+	s.cost = 4298
+	s.value = 6
+	s.career_id = Career.find_by(name:'楽天モバイル').id
+end
+
+Plan.seed do |s|
+	s.id = 25
+	s.name = 'プランL'
+	s.cost = 6458
+	s.value = 14
+	s.career_id = Career.find_by(name:'楽天モバイル').id
+end
+
+Plan.seed do |s|
+	s.id = 26
+	s.name = 'プランLL'
+	s.cost = 7538
+	s.value = 24
+	s.career_id = Career.find_by(name:'楽天モバイル').id
+end
+
+Plan.seed do |s|
+	s.id = 27
+	s.name = 'LINEフリープラン'
+	s.cost = 1296
+	s.value = 1
+	s.career_id = Career.find_by(name:'LINEモバイル').id
+end
+
+Plan.seed do |s|
+	s.id = 28
+	s.name = 'コミュニケーションフリープラン(3GB)'
+	s.cost = 1825
+	s.value = 3
+	s.career_id = Career.find_by(name:'LINEモバイル').id
+end
+
+Plan.seed do |s|
+	s.id = 29
+	s.name = 'コミュニケーションフリープラン(5GB)'
+	s.cost = 2397
+	s.value = 5
+	s.career_id = Career.find_by(name:'LINEモバイル').id
+end
+
+Plan.seed do |s|
+	s.id = 30
+	s.name = 'コミュニケーションフリープラン(7GB)'
+	s.cost = 3110
+	s.value = 7
+	s.career_id = Career.find_by(name:'LINEモバイル').id
+end
+
+Plan.seed do |s|
+	s.id = 31
+	s.name = 'コミュニケーションフリープラン(10GB)'
+	s.cost = 3477
+	s.value = 10
+	s.career_id = Career.find_by(name:'LINEモバイル').id
+end
+
+Plan.seed do |s|
+	s.id = 32
+	s.name = 'MUSIC＋プラン(3GB)'
+	s.cost = 2581
+	s.value = 3
+	s.career_id = Career.find_by(name:'LINEモバイル').id
+end
+
+Plan.seed do |s|
+	s.id = 33
+	s.name = 'MUSIC＋プラン(5GB)'
+	s.cost = 2937
+	s.value = 5
+	s.career_id = Career.find_by(name:'LINEモバイル').id
+end
+
+Plan.seed do |s|
+	s.id = 34
+	s.name = 'MUSIC＋プラン(7GB)'
+	s.cost = 3542
+	s.value = 7
+	s.career_id = Career.find_by(name:'LINEモバイル').id
+end
+
+Plan.seed do |s|
+	s.id = 35
+	s.name = 'MUSIC＋プラン(10GB)'
+	s.cost = 3801
+	s.value = 10
+	s.career_id = Career.find_by(name:'LINEモバイル').id
+end
+
+Plan.seed do |s|
+	s.id = 36
+	s.name = 'デュアルタイプ(0.5GB)'
+	s.cost = 1414
+	s.value = 0.5
+	s.career_id = Career.find_by(name:'mineo').id
+end
+
+Plan.seed do |s|
+	s.id = 37
+	s.name = 'デュアルタイプ(3GB)'
+	s.cost = 1630
+	s.value = 3
+	s.career_id = Career.find_by(name:'mineo').id
+end
+
+Plan.seed do |s|
+	s.id = 38
+	s.name = 'デュアルタイプ(6GB)'
+	s.cost = 2365
+	s.value = 6
+	s.career_id = Career.find_by(name:'mineo').id
+end
+
+Plan.seed do |s|
+	s.id = 39
+	s.name = 'デュアルタイプ(10GB)'
+	s.cost = 3380
+	s.value = 10
+	s.career_id = Career.find_by(name:'mineo').id
+end
+
+Plan.seed do |s|
+	s.id = 40
+	s.name = 'デュアルタイプ(20GB)'
+	s.cost = 4957
+	s.value = 20
+	s.career_id = Career.find_by(name:'mineo').id
+end
+
+Plan.seed do |s|
+	s.id = 41
+	s.name = 'デュアルタイプ(30GB)'
+	s.cost = 7030
+	s.value = 30
+	s.career_id = Career.find_by(name:'mineo').id
+end
+
+
+
+
+
+
+
+
+
+

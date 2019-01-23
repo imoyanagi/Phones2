@@ -69,3 +69,20 @@ MobilePhone.seed do |s|
 	s.mnp_cost = 4440
 	s.career_id = Career.find_by(name:'softbank').id
 end
+
+MobilePhone.seed do |s|
+	s.id = 10
+	s.name = '無し'
+	s.cost = 0
+	s.mnp_cost = 0
+	s.career_id = Career.find_by(name:'ymobile').id
+end
+
+MobilePhone.seed do |s|
+	s.id = 11
+	s.name = '無し'
+	s.cost = 0
+	s.mnp_cost = 0
+	s.career_id = Career.find_by(name:'uqmobile').id
+end
+

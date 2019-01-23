@@ -31,7 +31,7 @@
 				<%= select_tag :current_net_career, options_for_select([['指定無し', 0], ['docomo光', 1], ['au光', 2], ['softbank光', 3], ['ymobile', 4] ]) %>
 				<br>
 				<%= label(:mobile_phone, "端末") %> <br>
-				<%= select_tag :mobile_phone, options_for_select(['iPhone Xs 64GB', 'iPhone Xs MAX 64GB', 'iPhone XR 64GB']) %>
+				<%= select_tag :mobile_phone, options_for_select(['無し', 'iPhone Xs 64GB', 'iPhone Xs MAX 64GB', 'iPhone XR 64GB']) %>
 				<br>
 
 				<%= submit_tag("検索") %>

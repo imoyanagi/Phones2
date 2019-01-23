@@ -13,10 +13,10 @@
 			<th>端末</th>
 			<th></th>
 		</tr>
-		<% @totals.each do |total| %>
-			<% if total.call_plan.career_id == total.mobile_phone.career_id %>
+		<% @totals.uniq{|h| [ h.plan.name, h.call_plan.name, h.mobile_phone.career_id ]}.each do |total| %>
+		<% if total.call_plan.career_id == total.mobile_phone.career_id %>
 				<tr>
-					<td><%= Career.find_by(id: total.plan.career_id).name %></td>
+					<td><%= Career.find_by(id: total.call_plan.career_id).name %></td>
 					<td><%= total.plan.name %></td>
 					<td><%= total.call_plan.name %></td>
 					<td><%= total.plan.cost + total.call_plan.cost + total.mobile_phone.cost %>円/月</td>

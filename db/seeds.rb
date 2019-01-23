@@ -6,27 +6,29 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# idをモデルから引っ張りたい
-# d_plans = Plan.where(career_id: 1)
-# a_plans = Plan.where(career_id: 2)
-# s_plans = Plan.where(career_id: 3)
+# s = 1
+# while s <= 22
+# 	c = 1
+# 	while c <= 15
+# 		if s <= 4 && c <= 3 or s.between?(5,11) && c.between?(4,6) or s.between?(12,16) && c.between?(7,9) or s.between?(17,19) && c.between?(10,12) or s.between?(20,22) && c.between?(13,15)
+# 			m = 1
+# 			while m <= 11
+# 			Total.create(plan_id: s, call_plan_id: c, mobile_phone_id: m)
+# 			m += 1
+# 			end
+# 		end
+# 	c += 1
+# 	end
+# s += 1
+# end
 
-# d_call_plans = CallPlan.where(career_id: 1)
-# a_call_plans = CallPlan.where(career_id: 2)
-# s_call_plans = CallPlan.where(career_id: 3)
+plans = Plan.all.map{|m| m}
+call_plans = CallPlan.all.map{|m| m}
+mobile_phones = MobilePhone.all.map{|m| m}
 
-s = 1
-while s <= 22
-	c = 1
-	while c <= 15
-		if s <= 4 && c <= 3 or s.between?(5,11) && c.between?(4,6) or s.between?(12,16) && c.between?(7,9) or s.between?(17,19) && c.between?(10,12) or s.between?(20,22) && c.between?(13,15)
-			m = 1
-			while m <= 11
-			Total.create(plan_id: s, call_plan_id: c, mobile_phone_id: m)
-			m += 1
-			end
-		end
-	c += 1
+plans.product(call_plans, mobile_phones).each do |plan, call_plan, mobile_phone|
+	if plan.career_id == call_plan.career_id && call_plan.career_id == mobile_phone.career_id
+		Total.create(plan_id: plan.id, call_plan_id: call_plan.id, mobile_phone_id: mobile_phone.id)
 	end
-s += 1
 end
+

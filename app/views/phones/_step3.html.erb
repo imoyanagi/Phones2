@@ -1,0 +1,6 @@
+<%= form_tag(step3_path, method: :get) do %>
+	<%= label(:call_time, "月の通話時間") %><br>
+	<%= select_tag :call_time, options_for_select([['指定無し', 30], ['〜5分', 0], ['5〜20分', 5], ['20分~', 20]]) %>
+	<%= hidden_field_tag :option, @option %>
+	<%= submit_tag("結果を表示する") %>
+<% end %>

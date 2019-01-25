@@ -4,6 +4,21 @@ class PhonesController < ApplicationController
   	@call_plans = CallPlan.all
   end
 
+  def step1
+    @option = {}
+    @option[:career] = Career.find(params[:career_id])
+  end
+
+  def step2
+    @option = params[:option]
+    @option[:value] = params[:value]
+  end
+
+  def step3
+    @option = params[:option]
+    @option[:call_time] = params[:call_time]
+  end
+
   def search
     #検索条件の取得
     mobile_phone = params[:mobile_phone]

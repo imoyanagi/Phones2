@@ -3,6 +3,15 @@
 
 
 		<div class="col-lg-9">
+			<div id= "ajax_step3"></div>
+			<div id = "ajax_step2"></div>
+			<div id ="ajax_step1">
+				<%= form_tag(step1_path, method: :get, remote: true) do %>
+				<%= label_tag(:career_id, 'キャリア') %>
+				<%= select_tag :career_id, options_for_select([['docomo', 1], ['au', 2], ['softbank', 3], ['ymobile', 3000], ['uqmobile', 5]]) %>
+				<%= submit_tag("次へ") %>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>

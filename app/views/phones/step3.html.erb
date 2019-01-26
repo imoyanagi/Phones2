@@ -1,0 +1,31 @@
+<%= render 'phones/header' %>
+<%= render 'phones/form' %>
+
+<div class="col-lg-9">
+	<h1> 検索結果</h1>
+	<table class="table table-striped">
+		<tr>
+			<th>キャリア</th>
+			<th>データプラン</th>
+			<th>通話プラン</th>
+			<th>料金 </th>
+			<th>データ量</th>
+			<th>端末</th>
+			<th></th>
+		</tr>
+		<% @totals.uniq{|h| [ h.plan.name, h.call_plan.name, h.plan.career_id]}.each do |total| %>
+			<tr>
+				<td><%= Career.find_by(id: total.call_plan.career_id).name %></td>
+				<td><%= total.plan.name %></td>
+				<td><%= total.call_plan.name %></td>
+				<td><%= total.plan.cost + total.call_plan.cost + total.mobile_phone.cost %>円/月</td>
+				<td><%= total.plan.value %>GB/月</td>
+				<td><%= total.mobile_phone.name %><td>
+				<td><%= link_to "詳細", phone_path(id: total.id) %></td>
+			</tr>
+		<% end %>
+	</table>
+
+</div>
+</div>
+</div>

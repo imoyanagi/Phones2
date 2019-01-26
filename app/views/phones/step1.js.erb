@@ -1,2 +1,3 @@
-$("#ajax_step2").html("<%= j (render 'step2') %>");
-$("#ajax_step1").fadeOut(600);
+// $("#ajax_step1").fadeOut(600, function(){$("#ajax_step2").html("<%= j (render 'step2') %>")});
+$("#ajax_step1").fadeOut(400, function(){$("#ajax_step2").fadeIn(400).animate({'left':'30%'},{duration: 500, queue: false})}).animate({'left':'100%'},{duration: 500, queue: false});
+// $("#ajax_step2").html("<%= j (render 'step2') %>");

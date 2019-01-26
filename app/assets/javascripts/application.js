@@ -16,3 +16,17 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(function() {
+	$("#ajax_step2").css({
+		"left": "0px",
+		"display": "none"
+	});
+});
+
+$(function() {
+	$("#ajax_step3").css({
+		"left": "0px",
+		"display": "none"
+	});
+});

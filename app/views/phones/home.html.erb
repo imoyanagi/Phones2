@@ -2,14 +2,27 @@
 <%= render 'phones/form' %>
 
 
-		<div class="col-lg-9">
-			<div id= "ajax_step3"></div>
-			<div id = "ajax_step2"></div>
-			<div id ="ajax_step1">
+		<div class="col-lg-9 aaa">
+			<div id= "ajax_step3" class="ajax_step">
+				<%= form_tag(step3_path, method: :get) do %>
+				<%= label(:call_time, "月の通話時間", class:"ajax_label") %><br>
+				<%= select_tag :call_time, options_for_select([['指定無し', 30], ['〜5分', 0], ['5〜20分', 5], ['20分~', 20]]), class:"form-control input-lg" %>
+				<%= hidden_field_tag :value, @value %><br>
+				<%= submit_tag("結果を表示する", class:"ajax_submit") %>
+				<% end %>
+			</div>
+			<div id = "ajax_step2" class="ajax_step">
+				<%= form_tag(step2_path, method: :get, remote: true) do %>
+				<%= label(:value, "データ量", class:"ajax_label" ) %><br>
+				<%= select_tag :value, options_for_select([['指定無し', 0], ['1GB', 1], ['2GB', 2], ['3GB', 3], ['5GB', 5],['9GB', 9], ['20GB', 20]]), class:"form-control input-lg" %><br>
+				<%= submit_tag("次へ",  class:"ajax_submit") %>
+				<% end %>
+			</div>
+			<div id ="ajax_step1" class="ajax_step">
 				<%= form_tag(step1_path, method: :get, remote: true) do %>
-				<%= label_tag(:career_id, 'キャリア') %>
-				<%= select_tag :career_id, options_for_select([['docomo', 1], ['au', 2], ['softbank', 3], ['ymobile', 3000], ['uqmobile', 5]]) %>
-				<%= submit_tag("次へ") %>
+				 <%= label_tag(:career_id, 'キャリア', class:"ajax_label") %> <br>
+				 <%= select_tag :career_id, options_for_select([['docomo', 1], ['au', 2], ['softbank', 3], ['ymobile', 3000], ['uqmobile', 5]]), class:"form-control input-lg" %><br>
+				 <%= submit_tag("次へ", class:"ajax_submit") %>
 				<% end %>
 			</div>
 		</div>

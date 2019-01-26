@@ -1,8 +1,5 @@
 <%= form_tag(step2_path, method: :get, remote: true) do %>
-	<%= label(:value, "データ量" ) %><br>
-	<%= select_tag :value, options_for_select([['指定無し', 0], ['1GB', 1], ['2GB', 2], ['3GB', 3], ['5GB', 5],['9GB', 9], ['20GB', 20]]) %>
-	<%= hidden_field_tag :option, @option %>
-	<%= submit_tag("次へ") %>
+	<%= label(:value, "データ量", class:"ajax_label" ) %><br>
+	<%= select_tag :value, options_for_select([['指定無し', 0], ['1GB', 1], ['2GB', 2], ['3GB', 3], ['5GB', 5],['9GB', 9], ['20GB', 20]]), class:"form-control input-lg" %>
+	<%= submit_tag("次へ",  class:"ajax_submit") %>
 <% end %>
-
-<% @option[:career].name %>

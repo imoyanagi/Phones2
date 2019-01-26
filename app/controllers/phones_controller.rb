@@ -1,7 +1,5 @@
 class PhonesController < ApplicationController
   def home
-  	@plans = Plan.all.order(cost: "DESC")
-  	@call_plans = CallPlan.all
   end
 
   def step1
@@ -10,13 +8,28 @@ class PhonesController < ApplicationController
   end
 
   def step2
-    @option = params[:option]
-    @option[:value] = params[:value]
+    @value = params[:value].to_i
   end
 
   def step3
-    @option = params[:option]
-    @option[:call_time] = params[:call_time]
+    value = params[:value].to_i
+    call_time = params[:call_time].to_i
+
+    @mobile_phones = MobilePhone.where(" name == ? ", "無し")
+    @plans = Plan.where(" value >= ? ", value )
+    if call_time == 30
+      @call_plans = CallPlan.all
+    else
+      @call_plans = CallPlan.where("call_time == ? ", call_time )
+    end
+    plan_ids = []
+    @plans.each{|plan| plan_ids.push(plan.id)}
+    call_plan_ids = []
+    @call_plans.each{|call_plan| call_plan_ids.push(call_plan.id)}
+    mobile_phone_ids = []
+    @mobile_phones.each{|mobile_phone| mobile_phone_ids.push(mobile_phone.id)}
+    # @totals = Total.where("plan_id == ? and call_plan_id == ? and mobile_phone_id == ? ", @plan.id, @call_plan.id, @mobile_phone.id)
+    @totals = Total.where(plan_id: plan_ids).where(call_plan_id: call_plan_ids).where(mobile_phone_id: mobile_phone_ids)
   end
 
   def search

@@ -1,2 +1,5 @@
-$("#ajax_step1").fadeOut(400, function(){$("#ajax_step2").fadeIn(400).animate({'left':'30%'},{duration: 500, queue: false})}).animate({'left':'100%'},{duration: 500, queue: false});
+if ($("#ajax_step1").css("display") == "none") {
+	$("#ajax_step3").fadeOut(400, function(){$("#ajax_step2").fadeIn(400).animate({'left':'30%'},{duration: 500, queue: false})}).animate({'left':'0%'},{duration: 500, queue: false});
+}
+$("#ajax_step1").fadeOut(400, function(){$("#ajax_step2").fadeIn(400).animate({'left':'30%'},{duration: 500, queue: false})}).animate({'left':'80%'},{duration: 500, queue: false});
 

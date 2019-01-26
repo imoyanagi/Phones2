@@ -3,18 +3,15 @@ class PhonesController < ApplicationController
   end
 
   def step1
-    @option = {}
-    @option[:career] = Career.find(params[:career_id])
   end
 
   def step2
-    @value = params[:value].to_i
+    session[:value] = params[:value].to_i
   end
 
   def step3
-    value = params[:value].to_i
+    value = session[:value]
     call_time = params[:call_time].to_i
-
     @mobile_phones = MobilePhone.where(" name == ? ", "無し")
     @plans = Plan.where(" value >= ? ", value )
     if call_time == 30

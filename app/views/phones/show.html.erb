@@ -13,10 +13,6 @@
 			<td><%= @total.plan.name %></td>
 		</tr>
 		<tr>
-			<th>通話プラン</th>
-			<td><%= @total.call_plan.name %></td>
-		</tr>
-		<tr>
 			<th>端末</th>
 			<td><%= @total.mobile_phone.name %></td>
 		</tr>
@@ -33,11 +29,6 @@
 			<td><%= @total.plan.cost %> 円/月</td>
 		</tr>
 		<tr>
-			<th>通話プラン</th>
-			<td><%= @total.call_plan.name %></td>
-			<td><%= @total.call_plan.cost %> 円/月</td>
-		</tr>
-		<tr>
 			<th>端末代</th>
 			<td><%= @total.mobile_phone.name %></td>
 			<td><%= @total.mobile_phone.cost %> 円/月(24回)</td>
@@ -50,12 +41,12 @@
 		<tr>
 			<th>合計</th>
 			<td></td>
-			<td><%= @total.plan.cost.to_i + @total.call_plan.cost.to_i + @total.mobile_phone.cost.to_i %> 円/月</td>
+			<td><%= @total.plan.cost.to_i + @total.mobile_phone.cost.to_i %> 円/月</td>
 		</tr>
 		<tr>
-			<th>２年間の合計</th>
+			<th>1年間の合計</th>
 			<td></td>
-			<td><%= (@total.plan.cost.to_i + @total.call_plan.cost.to_i + @total.mobile_phone.cost.to_i) * 24 %> 円 </td>
+			<td><%= (@total.plan.cost.to_i + @total.mobile_phone.cost.to_i) * 12 %> 円 </td>
 		</tr>
 	</table>
 	<input class="btn btn-primary" type="button" value="このプランを保存する">

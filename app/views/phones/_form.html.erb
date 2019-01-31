@@ -5,42 +5,14 @@
 			<h1>検索条件</h1>
 			<%= form_tag('/search', method: :get) do %>
 
-				<%= label_tag(:cost, "料金" ) %>
-				<br>
-				<%= select_tag :min_cost, options_for_select([['下限無し', 0], ['1000円', 1000], ['2000円', 2000], ['3000円', 3000], ['4000円', 4000], ['5000円', 5000]]) %> 〜
-				<%= select_tag :max_cost, options_for_select([['上限無し', 100000], ['1000円', 1000], ['2000円', 2000], ['3000円', 3000], ['4000円', 4000], ['5000円', 5000], ['6000円', 6000], ['7000円', 7000], ['8000円', 8000], ['9000円', 9000] ]) %>
-
-				<br>
-
 				<%= label(:value, "データ量" ) %><br>
 				<%= select_tag :value, options_for_select([['指定無し', 0], ['1GB', 1], ['2GB', 2], ['3GB', 3], ['5GB', 5],['9GB', 9], ['20GB', 20]]) %>
 				<br>
-			<!--
-				<%= label(:number_of_family, "家族の人数") %><br>
-				<%= select_tag :number_of_family, options_for_select([['１人',1],['2人',2],['3人',3],['4人',4],['5人',5]]) %>
-				<br>
-			-->
 
-				<%= label(:call_time, "月の通話時間") %><br>
-				<%= select_tag :call_time, options_for_select([['指定無し', 30], ['〜5分', 0], ['5〜20分', 5], ['20分~', 20]]) %>
-				<br>
-				<%= label(:current_career, "使用中のキャリア" ) %> <br>
-				<%= select_tag :current_career, options_for_select([['指定無し', 0], ['docomo', 1], ['au', 2], ['softbank', 3], ['ymobile', 4], ['uqmobile']]) %>
-				<br>
-				<%= label(:current_net_career, "使用中のインターネット") %> <br>
-				<%= select_tag :current_net_career, options_for_select([['指定無し', 0], ['docomo光', 1], ['au光', 2], ['softbank光', 3], ['ymobile', 4] ]) %>
-				<br>
 				<%= label(:mobile_phone, "端末") %> <br>
-				<%= select_tag :mobile_phone, options_for_select(['無し', 'iPhone Xs 64GB', 'iPhone Xs MAX 64GB', 'iPhone XR 64GB']) %>
+				<%= select_tag :mobile_phone, options_for_select(['無し']) %>
 				<br>
 
 				<%= submit_tag("検索") %>
-				<br>
-				<p> キャリアで選ぶ</p>
-				<%= link_to "docomo", category_path(1) %>
-				<br>
-				<%= link_to "au", category_path(2) %>
-				<br>
-				<%= link_to "softbank", category_path(3) %>
 			<% end %>
 		</div>

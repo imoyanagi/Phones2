@@ -1,4 +1,5 @@
 class Career < ApplicationRecord
 	has_many :plans
-	has_many :call_plans
+	has_many :options
+	has_many :mobile_phones
 end

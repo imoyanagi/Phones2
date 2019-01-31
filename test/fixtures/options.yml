@@ -3,11 +3,9 @@
 one:
   name: MyString
   cost: 1
-  call_time: 1
   career_id: 1
 
 two:
   name: MyString
   cost: 1
-  call_time: 1
   career_id: 1

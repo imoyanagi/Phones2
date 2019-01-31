@@ -23,12 +23,11 @@
 # end
 
 plans = Plan.all.map{|m| m}
-call_plans = CallPlan.all.map{|m| m}
 mobile_phones = MobilePhone.all.map{|m| m}
 
-plans.product(call_plans, mobile_phones).each do |plan, call_plan, mobile_phone|
-	if plan.career_id == call_plan.career_id && call_plan.career_id == mobile_phone.career_id
-		Total.create(plan_id: plan.id, call_plan_id: call_plan.id, mobile_phone_id: mobile_phone.id)
+plans.product(mobile_phones).each do |plan, mobile_phone|
+	if plan.career_id == mobile_phone.career_id
+		Total.create(plan_id: plan.id, mobile_phone_id: mobile_phone.id)
 	end
 end
 

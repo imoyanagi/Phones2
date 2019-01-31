@@ -9,6 +9,7 @@
 			<th>データプラン</th>
 			<th>通話プラン</th>
 			<th>料金 </th>
+			<th>２年間のトータルコスト</th>
 			<th>データ量</th>
 			<th>端末</th>
 			<th></th>
@@ -20,6 +21,7 @@
 					<td><%= total.plan.name %></td>
 					<td><%= total.call_plan.name %></td>
 					<td><%= total.plan.cost + total.call_plan.cost + total.mobile_phone.cost %>円/月</td>
+					<td><%= (total.plan.cost + total.call_plan.cost + total.mobile_phone.cost) * 24 %> 円</td>
 					<td><%= total.plan.value %>GB/月</td>
 					<td><%= total.mobile_phone.name %><td>
 					<td><%= link_to "詳細", phone_path(id: total.id) %></td>

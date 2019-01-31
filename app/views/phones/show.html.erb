@@ -49,8 +49,13 @@
 		</tr>
 		<tr>
 			<th>合計</th>
-			<th></th>
+			<td></td>
 			<td><%= @total.plan.cost.to_i + @total.call_plan.cost.to_i + @total.mobile_phone.cost.to_i %> 円/月</td>
+		</tr>
+		<tr>
+			<th>２年間の合計</th>
+			<td></td>
+			<td><%= (@total.plan.cost.to_i + @total.call_plan.cost.to_i + @total.mobile_phone.cost.to_i) * 24 %> 円 </td>
 		</tr>
 	</table>
 	<input class="btn btn-primary" type="button" value="このプランを保存する">
